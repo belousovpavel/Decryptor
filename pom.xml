@@ -1,0 +1,40 @@
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <executable>true</executable>
+                <addResources>true</addResources>
+                <arguments>
+                    <argument>--server.port=8080</argument>
+                </arguments>
+                <jvmArguments>
+                    <jvmArgument>-Dspring.output.ansi.enabled=always</jvmArgument>
+                </jvmArguments>
+                <fork>true</fork>
+                <mainClass>com.example.atbashdecryptor.AtbashDecryptorApplication</mainClass>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.0.0</version>
+            <executions>
+                <execution>
+                    <id>open-browser</id>
+                    <phase>post-integration-test</phase>
+                    <goals>
+                        <goal>exec</goal>
+                    </goals>
+                    <configuration>
+                        <executable>C:\Users\user\AppData\Local\Yandex\YandexBrowser\Application\browser.exe</executable> <!-- Путь к Яндекс браузеру -->
+                        <arguments>
+                            <argument>http://localhost:8080</argument>
+                        </arguments>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
